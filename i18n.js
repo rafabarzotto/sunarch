@@ -10,6 +10,8 @@
       "hero.title": "The sun of your project, from the map to the facade.",
       "hero.lead": "Sun path, shadows, solar energy estimates and facade sun studies on your iPhone, with data from NOAA, NASA and Apple Weather.",
       "hero.more": "See features →",
+      "shots.title": "A look inside SunArch", "shots.label": "SunArch screens",
+      "shots.prev": "Previous", "shots.next": "Next",
       "chip.compass": "Sun Compass", "chip.shadow": "Shadows", "chip.panel": "Panel 3D", "chip.comfort": "Comfort & Facades",
       "alt.compass": "SunArch Sun Compass: the sun's path over the satellite map",
       "alt.facade": "SunArch Facade AR measuring the overhang shadow on a window",
@@ -70,6 +72,8 @@
       "hero.title": "El sol de tu proyecto, del mapa a la fachada.",
       "hero.lead": "Trayectoria del sol, sombras, estimación de energía solar y estudio solar de fachadas en tu iPhone, con datos de la NOAA, la NASA y Apple Weather.",
       "hero.more": "Ver funciones →",
+      "shots.title": "Mira SunArch por dentro", "shots.label": "Pantallas de SunArch",
+      "shots.prev": "Anteriores", "shots.next": "Siguientes",
       "chip.compass": "Brújula Solar", "chip.shadow": "Sombras", "chip.panel": "Panel 3D", "chip.comfort": "Confort y Fachadas",
       "alt.compass": "Brújula Solar de SunArch: la trayectoria del sol sobre el mapa satelital",
       "alt.facade": "Facade AR de SunArch midiendo la sombra del alero sobre una ventana",
@@ -128,15 +132,47 @@
   var LANGS = { pt: "pt-BR", en: "en", es: "es" };
   var nodes = document.querySelectorAll("[data-i]");
   var alts = document.querySelectorAll("[data-i-alt]");
+  var labels = document.querySelectorAll("[data-i-label]");
   // O texto original (português) de cada elemento, para voltar a ele.
-  var pt = [], ptAlt = [];
+  var pt = [], ptAlt = [], ptLabel = [];
   nodes.forEach(function (n, i) { pt[i] = n.textContent; });
   alts.forEach(function (n, i) { ptAlt[i] = n.getAttribute("alt"); });
+  labels.forEach(function (n, i) { ptLabel[i] = n.getAttribute("aria-label"); });
+
+  // Galeria: as capturas da App Store da língua (assets/shots/shots.js, gerado
+  // pelo Heliora/Tools/screenshots/make.py --web); sem ela, as em inglês.
+  var gallery = document.getElementById("shots");
+  function renderShots(code) {
+    var all = window.SHOTS || {};
+    var list = all[code] || all.en;
+    if (!gallery) return;
+    gallery.closest("section").hidden = !list || !list.length;
+    if (!list) return;
+    gallery.textContent = "";
+    list.forEach(function (s) {
+      var img = document.createElement("img");
+      img.src = "assets/shots/" + s.src;
+      img.alt = s.alt;
+      img.width = s.w;
+      img.height = s.h;
+      img.loading = "lazy";
+      gallery.appendChild(img);
+    });
+    gallery.scrollLeft = 0;
+  }
+  document.querySelectorAll(".shots-nav").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var dir = b.classList.contains("prev") ? -1 : 1;
+      gallery.scrollBy({ left: dir * gallery.clientWidth * 0.8, behavior: "smooth" });
+    });
+  });
 
   function apply(lang) {
     var t = T[lang];
     nodes.forEach(function (n, i) { n.textContent = t && t[n.dataset.i] || pt[i]; });
     alts.forEach(function (n, i) { n.setAttribute("alt", t && t[n.dataset.iAlt] || ptAlt[i]); });
+    labels.forEach(function (n, i) { n.setAttribute("aria-label", t && t[n.dataset.iLabel] || ptLabel[i]); });
+    renderShots(LANGS[lang]);
     document.documentElement.lang = LANGS[lang];
     document.querySelectorAll(".langs button").forEach(function (b) {
       b.classList.toggle("on", b.dataset.lang === lang);
