@@ -46,13 +46,15 @@ a { color: var(--accent); }
 }
 .langs button.on { background: var(--ink); color: #fff; }
 
-.store {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--ink); color: #fff; text-decoration: none;
-  font-weight: 600; font-size: 15px; padding: 11px 18px; border-radius: 999px; white-space: nowrap;
+/* Selo oficial da App Store (Apple Marketing Toolbox), sem alterar a arte,
+   e o "Em breve" ao lado enquanto o app não está na loja. */
+.store { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
+.store img { height: 40px; width: auto; }
+.store.big img { height: 54px; }
+.store .soon {
+  font-size: 12px; font-weight: 600; color: var(--accent); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
 }
-.store small { display: block; font-size: 11px; font-weight: 500; opacity: .75; line-height: 1.1; }
-.store.big { font-size: 17px; padding: 14px 24px; }
 .store[aria-disabled="true"] { cursor: default; }
 
 /* Destaque */
@@ -70,19 +72,29 @@ a { color: var(--accent); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
 .chips span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: 14px; color: var(--muted); }
 
+/* iPhone: a tela inteira (1179 × 2556), cantos de iPhone e a Dynamic Island */
 .phone {
-  border-radius: 38px; padding: 10px; background: #111;
+  position: relative;
+  border-radius: 46px; padding: 10px; background: #111;
   box-shadow: 0 30px 70px rgba(80, 40, 0, .25), 0 0 0 1px rgba(0,0,0,.05);
   max-width: 340px; margin: 0 auto;
 }
-.phone img { border-radius: 29px; }
-.feature .phone { max-width: 300px; }
+.phone img { width: 100%; aspect-ratio: 1179 / 2556; object-fit: cover; border-radius: 37px; }
+.phone::after {
+  content: ""; position: absolute; left: 50%; top: 10px; margin-top: 2.6%;
+  width: 30%; aspect-ratio: 3.4; transform: translateX(-50%);
+  background: #000; border-radius: 999px;
+}
+.feature .phone { max-width: 270px; }
 
 /* Três telas do app no destaque */
-.trio { position: relative; height: 540px; }
+.trio { position: relative; height: 560px; }
 .trio .phone { position: absolute; margin: 0; }
-.trio .front { width: 270px; left: 50%; top: 0; transform: translateX(-50%); z-index: 2; }
-.trio .side { width: 210px; top: 90px; }
+.trio .front { width: 250px; left: 50%; top: 0; transform: translateX(-50%); z-index: 2; border-radius: 42px; }
+.trio .front img { border-radius: 33px; }
+.trio .side { width: 200px; top: 80px; padding: 8px; border-radius: 34px; }
+.trio .side img { border-radius: 27px; }
+.trio .side::after { top: 8px; }
 .trio .left { left: 0; transform: rotate(-7deg); }
 .trio .right { right: 0; transform: rotate(7deg); }
 
@@ -158,7 +170,7 @@ section.block { padding: 72px 0; }
 }
 .final h2 { color: #fff; }
 .final p { color: rgba(255,255,255,.85); font-size: 19px; margin: 0 0 26px; }
-.final .store { background: #fff; color: var(--ink); }
+.final .store .soon { background: rgba(255, 255, 255, .15); border-color: rgba(255, 255, 255, .35); color: #fff; }
 
 footer.site { padding: 48px 0 40px; color: var(--muted); font-size: 15px; }
 footer.site .wrap { display: flex; flex-wrap: wrap; gap: 18px 36px; align-items: center; justify-content: space-between; }
@@ -175,9 +187,13 @@ footer.site a { color: var(--ink); text-decoration: none; }
 }
 
 @media (max-width: 560px) {
-  .trio { height: 340px; }
-  .trio .front { width: 200px; }
-  .trio .side { width: 150px; top: 70px; }
+  .trio { height: 400px; }
+  .trio .front { width: 180px; padding: 7px; border-radius: 30px; }
+  .trio .front img { border-radius: 24px; }
+  .trio .front::after { top: 7px; }
+  .trio .side { width: 140px; top: 60px; padding: 6px; border-radius: 24px; }
+  .trio .side img { border-radius: 19px; }
+  .trio .side::after { top: 6px; }
   body { font-size: 16px; }
   .grid4, .grid3, .sources { grid-template-columns: 1fr; }
   .hero { padding-top: 40px; }

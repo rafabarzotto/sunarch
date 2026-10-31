@@ -5,7 +5,8 @@
   var T = {
     en: {
       "nav.who": "Who it's for", "nav.features": "Features", "nav.pro": "Pro", "nav.support": "Support",
-      "store.soon": "Coming soon to the",
+      "store.soon": "Coming soon",
+      "badge.src": "assets/badges/app-store-en-us.svg", "badge.alt": "Download on the App Store",
       "hero.eyebrow": "For iPhone",
       "hero.title": "The sun of your project, from the map to the facade.",
       "hero.lead": "Sun path, shadows, solar energy estimates and facade sun studies on your iPhone, with data from NOAA, NASA and Apple Weather.",
@@ -67,7 +68,8 @@
     },
     es: {
       "nav.who": "Para quién", "nav.features": "Funciones", "nav.pro": "Pro", "nav.support": "Soporte",
-      "store.soon": "Próximamente en la",
+      "store.soon": "Próximamente",
+      "badge.src": "assets/badges/app-store-es-mx.svg", "badge.alt": "Descárgalo en el App Store",
       "hero.eyebrow": "Para iPhone",
       "hero.title": "El sol de tu proyecto, del mapa a la fachada.",
       "hero.lead": "Trayectoria del sol, sombras, estimación de energía solar y estudio solar de fachadas en tu iPhone, con datos de la NOAA, la NASA y Apple Weather.",
@@ -133,11 +135,15 @@
   var nodes = document.querySelectorAll("[data-i]");
   var alts = document.querySelectorAll("[data-i-alt]");
   var labels = document.querySelectorAll("[data-i-label]");
+  var srcs = document.querySelectorAll("[data-i-src]");
+  // Os iPhones da página: a mesma tela, com o app na língua escolhida.
+  var screens = document.querySelectorAll("img[data-screen]");
   // O texto original (português) de cada elemento, para voltar a ele.
-  var pt = [], ptAlt = [], ptLabel = [];
+  var pt = [], ptAlt = [], ptLabel = [], ptSrc = [];
   nodes.forEach(function (n, i) { pt[i] = n.textContent; });
   alts.forEach(function (n, i) { ptAlt[i] = n.getAttribute("alt"); });
   labels.forEach(function (n, i) { ptLabel[i] = n.getAttribute("aria-label"); });
+  srcs.forEach(function (n, i) { ptSrc[i] = n.getAttribute("src"); });
 
   // Galeria: as capturas da App Store da língua (assets/shots/shots.js, gerado
   // pelo Heliora/Tools/screenshots/make.py --web); sem ela, as em inglês.
@@ -172,6 +178,8 @@
     nodes.forEach(function (n, i) { n.textContent = t && t[n.dataset.i] || pt[i]; });
     alts.forEach(function (n, i) { n.setAttribute("alt", t && t[n.dataset.iAlt] || ptAlt[i]); });
     labels.forEach(function (n, i) { n.setAttribute("aria-label", t && t[n.dataset.iLabel] || ptLabel[i]); });
+    srcs.forEach(function (n, i) { n.setAttribute("src", t && t[n.dataset.iSrc] || ptSrc[i]); });
+    screens.forEach(function (n) { n.src = "assets/shots/screens/" + LANGS[lang] + "/" + n.dataset.screen + ".jpg"; });
     renderShots(LANGS[lang]);
     document.documentElement.lang = LANGS[lang];
     document.querySelectorAll(".langs button").forEach(function (b) {
