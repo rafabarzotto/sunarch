@@ -8,49 +8,55 @@ window.SHOTS = {
    "h": 1518
   },
   {
-   "src": "pt-BR/02-compass.jpg",
+   "src": "pt-BR/02-home.jpg",
+   "alt": "O sol e o clima do seu local num relance",
+   "w": 700,
+   "h": 1518
+  },
+  {
+   "src": "pt-BR/03-compass.jpg",
    "alt": "A trajetória do sol sobre o mapa",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/03-shadow.jpg",
+   "src": "pt-BR/04-shadow.jpg",
    "alt": "Veja onde a sombra cai a cada hora",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/04-solar.jpg",
+   "src": "pt-BR/05-solar.jpg",
    "alt": "Simule as placas e estime a geração",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/05-angles.jpg",
+   "src": "pt-BR/06-angles.jpg",
    "alt": "Encontre a inclinação ideal dos painéis",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/06-outside_facades.jpg",
+   "src": "pt-BR/07-outside_facades.jpg",
    "alt": "Simule janela e beiral na câmera",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/07-inside_facades.jpg",
+   "src": "pt-BR/08-inside_facades.jpg",
    "alt": "Veja o sol entrar pela janela no verão e no inverno",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/08-timer.jpg",
+   "src": "pt-BR/09-timer.jpg",
    "alt": "Nascer, pôr do sol, hora dourada e hora azul",
    "w": 700,
    "h": 1518
   },
   {
-   "src": "pt-BR/09-space.jpg",
+   "src": "pt-BR/10-space.jpg",
    "alt": "Clima espacial: índice Kp e fluxo solar",
    "w": 700,
    "h": 1518
