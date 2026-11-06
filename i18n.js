@@ -5,7 +5,6 @@
   var T = {
     en: {
       "nav.who": "Who it's for", "nav.features": "Features", "nav.pro": "Pro", "nav.support": "Support",
-      "store.soon": "Coming soon",
       "badge.src": "assets/badges/app-store-en-us.svg", "badge.alt": "Download on the App Store",
       "hero.eyebrow": "For iPhone",
       "hero.title": "The sun of your project, from the map to the facade.",
@@ -68,7 +67,6 @@
     },
     es: {
       "nav.who": "Para quién", "nav.features": "Funciones", "nav.pro": "Pro", "nav.support": "Soporte",
-      "store.soon": "Próximamente",
       "badge.src": "assets/badges/app-store-es-mx.svg", "badge.alt": "Descárgalo en el App Store",
       "hero.eyebrow": "Para iPhone",
       "hero.title": "El sol de tu proyecto, del mapa a la fachada.",

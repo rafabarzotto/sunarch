@@ -47,15 +47,10 @@ a { color: var(--accent); }
 .langs button.on { background: var(--ink); color: #fff; }
 
 /* Selo oficial da App Store (Apple Marketing Toolbox), sem alterar a arte,
-   e o "Em breve" ao lado enquanto o app não está na loja. */
-.store { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
+   com o link da página do app na loja do país de quem visita. */
+.store { display: inline-flex; align-items: center; text-decoration: none; }
 .store img { height: 40px; width: auto; }
 .store.big img { height: 54px; }
-.store .soon {
-  font-size: 12px; font-weight: 600; color: var(--accent); background: var(--card);
-  border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
-}
-.store[aria-disabled="true"] { cursor: default; }
 
 /* Destaque */
 .hero { position: relative; overflow: hidden; padding: 72px 0 40px; }
@@ -170,7 +165,6 @@ section.block { padding: 72px 0; }
 }
 .final h2 { color: #fff; }
 .final p { color: rgba(255,255,255,.85); font-size: 19px; margin: 0 0 26px; }
-.final .store .soon { background: rgba(255, 255, 255, .15); border-color: rgba(255, 255, 255, .35); color: #fff; }
 
 footer.site { padding: 48px 0 40px; color: var(--muted); font-size: 15px; }
 footer.site .wrap { display: flex; flex-wrap: wrap; gap: 18px 36px; align-items: center; justify-content: space-between; }
@@ -197,7 +191,7 @@ footer.site a { color: var(--ink); text-decoration: none; }
   body { font-size: 16px; }
   .grid4, .grid3, .sources { grid-template-columns: 1fr; }
   .hero { padding-top: 40px; }
-  /* No celular o topo não cabe "Em breve na App Store": o botão fica só no destaque. */
+  /* No celular o selo não cabe no topo: o botão fica só no destaque. */
   .top .store { display: none; }
   .top .wrap { gap: 10px; }
   .brand span { display: none; }
